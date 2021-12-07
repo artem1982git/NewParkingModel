@@ -244,6 +244,11 @@ public class Main {
         parkingArray[i][j]=smallFree; // свободное маленькое место
 
         checkLastBusyPlace(i,j);
+        if(ifirstSmallFreePlace==-1){ //если нет свободных мест
+            ifirstSmallFreePlace=i;
+            jfirstSmallFreePlace=j;
+            return;
+        }
 
         if ((i<ifirstSmallFreePlace) || (i==ifirstSmallFreePlace && j<jfirstSmallFreePlace)){
            ifirstSmallFreePlace=i;
@@ -256,11 +261,15 @@ public class Main {
         parkingArray[i][j]=bigFree; // свободное большое место
 
         checkLastBusyPlace(i,j);
-
-        if (i<ifirstBigFreePlace || (i==ifirstBigFreePlace && j<jfirstBigFreePlace)){
+        if(ifirstBigFreePlace==-1){
             ifirstBigFreePlace=i;
             jfirstBigFreePlace=j;
             return;
+        }
+        if (i<ifirstBigFreePlace || (i==ifirstBigFreePlace && j<jfirstBigFreePlace)){
+            ifirstBigFreePlace=i;
+            jfirstBigFreePlace=j;
+
         }
 
     }
@@ -271,6 +280,12 @@ public class Main {
         parkingArray[i][j]=smallFree; // свободное маленькое место
         parkingArray[i][j+1]=smallFree;
         checkLastBusyPlace(i,j+1);
+        if(ifirstSmallFreePlace==-1){
+            ifirstSmallFreePlace=i;
+            jfirstSmallFreePlace=j;
+            return;
+        }
+
         if ((i<ifirstSmallFreePlace) || (i==ifirstSmallFreePlace && j<jfirstSmallFreePlace)){
             ifirstSmallFreePlace=i;
             jfirstSmallFreePlace=j;
